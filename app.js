@@ -6,8 +6,6 @@ const grandTotalField = document.querySelector("#Grand-total-price");
 let total = 0;
 
 addButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  console.log("here");
   if (!itemName.value) {
     alert("please add item name");
     return;
@@ -24,6 +22,17 @@ addButton.addEventListener("click", (e) => {
   const outerDiv = document.createElement("div");
   outerDiv.classList.add("flex", "flex-row", "gap-2", "mb-2", "item-list");
   finalList.appendChild(outerDiv);
+
+  if (finalList.childElementCount >= 10) {
+    alert(
+      "it's just a play ground !! 😁. Can't add more items."
+    );
+    finalList.innerHTML = "";
+    grandTotalField.value = "";
+    itemName.value = "";
+    itemPrice.value = "";
+    return;
+  }
 
   const itemNameInput = document.createElement("input");
   itemNameInput.type = "text";
